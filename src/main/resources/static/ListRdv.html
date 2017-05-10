@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/myStyle.css"/>
+
+</head>
+<body>
+	<body  ng-app="myApp12"  ng-controller="afficherListeRdv">
+<div class="col-md-6 col-sm-12 col-xs-12">
+	<div class="panel panel-info spacer">
+	<div class="panel-heading"> Heading </div>
+		<div class="panel-body">
+		<form >
+			<div class="form-group">
+				
+				<button ng-click="afficher()"> Charger </button>
+		
+			</div>
+		</form>
+	
+	</div>
+	</div>
+	
+	</div>
+	
+	<div class="col-md-6 col-sm-12 col-xs-12">
+	
+		<div class="panel panel-info spacer">
+			<div class="panel-heading "> Liste des Rendez vous</div>
+			<div class="panel-body "  ng-repeat="a in rdv">
+			
+				  <div class="form-group">
+				 	 <label> ID: </label>
+				 	<label>
+				 	{{a.key}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Date: </label>
+				 	<label>
+				 	{{a.date}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Heure: </label>
+				 	<label>
+				 	{{a.heure}}
+				 	</label>
+				 </div>
+				 
+				  <div class="form-group">
+				 	 <label>Nom Medecin: </label>
+				 	<label>
+				 	{{a.nomMedecin}}
+				 	</label>
+				 </div>
+				 
+				  <div class="form-group">
+				 	 <label>Nom Patient: </label>
+				 	<label>
+				 	{{a.nomPatient}} 
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 		
+				<button ng-click="supprimerRdv(a.key)"> Supprimer </button>
+				{{rdv1.key}} a été supprimer
+				 </div> 
+				 --------------------------------------------------------------------------------------------------------------------------
+			 </div>
+		</div>
+	</div>
+	
+<script type="text/javascript" src="angularjs/angular.min.js"></script>
+<script type="text/javascript" src="js/ajoutRdv.js"></script>	
+	
+
+
+</body>
+</body>
+</html>

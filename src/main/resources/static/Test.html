@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo</title>
+	
+	</head>
+<body>
+<h2 style="color:red;">
+This demo may not work property as the target url where request is being sent doesn't exists on this server.
+</h2> 
+<hr />
+
+<div ng-app="myApp2" ng-controller="chercher">
+    <h2>AngularJS Delete request </h2>
+    <form ng-submit="DeleteData()">
+        <p>First Name: <input type="text" name="firstName" ng-model="firstName" required /></p>
+        <p>Last Name: <input type="text" name="lastName" ng-model="lastName"  /></p>
+        <p>Age : <input type="number" name="age" ng-model="age" /></p>
+        <input type="submit" value="Submit" />
+        <hr/>
+        {{medecin.nom}} a été supprimer
+    </form>
+    <script type="text/javascript" src="angularjs/angular.min.js"></script>
+<script type="text/javascript" src="js/chercherMedecinVille.js"></script>	
+
+</div>
+</body>
+</html>

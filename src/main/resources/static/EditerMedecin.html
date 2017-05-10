@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/myStyle.css"/>
+
+ <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bootstrap/css/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="bootstrap/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<style>
+
+img{
+        width: 150px;
+    height: auto;
+    border: 150px;
+}
+</style>
+
+<script type='text/javascript'>
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+   
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
+        
+        //alert(document.getElementById("imgTest").innerHTML)
+        document.getElementById("imgTest").innerHTML = srcData;
+        //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+        //alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+   
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+</script>
+</head>
+<body ng-app="myApp10" ng-controller="editerMedecin">
+<div class="col-lg-12 col-md-6 col-xs-6">
+		<div class="panel panel-info spacer">
+			<div class="panel-heading spacer">
+				Entrez ID Medecin:
+			</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<label>Entrez ID </label>
+						<input type="text" ng-model="id" autofocus>
+				
+						<button ng-click="chercherId()"> Charger </button>
+		
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+
+<div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+	
+		<div class="panel panel-info spacer">
+			<div class="panel-heading ">Editer des medecin</div>
+			<div class="panel-body "  >
+			<div class="form-group">
+				 	 
+				 	<label>
+				 	<img ng-src="{{medecin.photos}}">
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				  
+				 	 <label> ID: </label>
+				 	<label>
+				 	{{medecin.id}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Nom: </label>
+				 	<label>
+				 	{{medecin.nom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Prenom: </label>
+				 	<label>
+				 	{{medecin.prenom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label>Sexe: </label>
+				 	<label>
+				 	{{medecin.sexe}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 		
+				<button ng-click="supprimerMedecin(medecin.id)"> Supprimer </button>
+				
+			</div>
+			</div>
+
+
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<center>
+		<div class="panel panel-info spacer">
+			<div class="panel-heading "> Etat du compte</div>
+			<div class="panel-body " >
+			<div class="form-group">
+				 	<label>
+				 	<img ng-src="{{medecin.photos}}">
+				 	
+				 	
+				 	<center>Photos:</center> <input class="form-control" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" ng-model="photos" type="file" value=""> <br/>
+                    <div id="imgTest" ng-model="imgTest"></div>
+                                	
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				  
+				 	
+				 	<label>
+				 	<input readonly="true" value="{{medecin.id}}" class="form-control" placeholder="ID"  ng-model="id">
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 
+				 	<label>
+				 	<input value="{{medecin.nom}}" ng-model="nom" class="form-control"  placeholder="Nom"> {{medecin.nom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 
+				 	<label>
+				 	<input type="text" ng-model="prenom" class="form-control"  placeholder="Prenom"> {{medecin.prenom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 
+				 	<label>
+				 	<input type="text" class="form-control"  placeholder="Sexe"  ng-model="sexe">
+				 	</label>
+				
+ 				 </div> 
+ 				 
+ 				 
+ 				  <div class="form-group">
+ 				  <label>
+                       <input class="form-control" placeholder="Ville" name="ville" ng-model="ville" >
+                  </label>
+                  </div>
+                  <div class="form-group">
+                        <label>
+                        <input class="form-control" placeholder="Adresse" name="adresse" ng-model="adresse" >
+                  		</label>
+                  </div>
+                  <div class="form-group">
+                         <label>
+                         <input class="form-control" placeholder="Code postale" name="codePostale" ng-model="codePostale" >
+                  	</label>
+                  </div>
+                  <div class="form-group">
+                      <label>
+                         <input class="form-control" placeholder="Phone Number" name="phoneNumber" ng-model="phoneNumber">
+                  </label>
+                  </div>
+                                
+                  <div class="form-group">
+                       <label>
+                         <input class="form-control" placeholder="E-mail" name="email" type="email" ng-model="email">
+                  	</label>
+                  </div>
+                  
+                   <div class="form-group">
+                        <label>
+                        <input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="password">
+                   	</label>
+                   </div>
+                   <div class="form-group">
+                        <label>
+                         <input class="form-control" placeholder="Prix Consultation" name="prix" ng-model="prix" >
+                   	</label>
+                   </div>
+                   <div class="form-group">
+                         <label>
+                         <textarea class="form-control" placeholder="Presentation" name="presentation" ng-model="presentation" >
+                   			</textarea>
+                   	</label>
+                   </div>
+                   <div class="form-group">
+                          <label>
+                          <input class="form-control" placeholder="Mode Payement" name="modePayement" ng-model="modePayement" >
+                   	</label>
+                   </div>
+                    <div class="form-group">
+                          <label>
+                           <input class="form-control" placeholder="Specialite" name="specialite" ng-model="spc" >
+                    </label>
+                    </div>
+                  
+                  
+                  
+ 				 <button ng-click="editerMedecin(medecin.id)"> Mettre a jour </button>
+ 				 
+ </div> </div> </div>
+	<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="js/editerMedecin.js"></script>
+
+	</div>
+	</div>
+	
+	</div>
+</body>
+</html>

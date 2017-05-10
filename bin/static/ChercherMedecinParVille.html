@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/myStyle.css"/>
+
+<style>
+
+img{
+        width: 150px;
+    height: auto;
+    border: 150px;
+}
+</style>
+
+</head>
+<body ng-app="myApp2">
+<div ng-controller="chercher">
+	<div class="col-lg-6 col-md-6 col-xs-6">
+		<div class="panel panel-info spacer">
+			<div class="panel-heading spacer">
+				Chercher medecin par ville:
+			</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<label>Entrez nom de la ville </label>
+						<input type="text" ng-model="ville">
+				
+						<button ng-click="chercherVille()"> Charger </button>
+		
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+	
+	<div class="col-md-6 col-sm-12 col-xs-12">
+	
+		<div class="panel panel-info spacer">
+			<div class="panel-heading ">Liste des medecins</div>
+			<div class="panel-body "  ng-repeat="a in medecins">
+			  <div class="form-group">
+				 	 <label> Photos: </label>
+				 	<label>
+				 	<img ng-src="{{a.photos}}">
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				  
+				 	 <label> ID: </label>
+				 	<label>
+				 	{{a.id}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Nom: </label>
+				 	<label>
+				 	{{a.nom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label> Prenom: </label>
+				 	<label>
+				 	{{a.prenom}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 	 <label>Sexe: </label>
+				 	<label>
+				 	{{a.sexe}}
+				 	</label>
+				 </div>
+				  <div class="form-group">
+				 		
+				<button ng-click="supprimerMedecin(a.id)"> Supprimer </button>
+				<a href="AjouterRdv.html"><button> Prendre Rdv </button> </a>
+				<!-- <button ng-click="editer(a.nom)"> Editer </button>-->
+			</div>
+		<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="js/chercherMedecinVille.js"></script>
+
+</div>
+
+
+
+</body>
+</html>

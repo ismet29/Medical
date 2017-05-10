@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/myStyle.css"/>
+
+ <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bootstrap/css/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="bootstrap/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+<script type='text/javascript'>
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+   
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
+        
+        //alert(document.getElementById("imgTest").innerHTML)
+        document.getElementById("imgTest").innerHTML = srcData;
+        //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+        //alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+   
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+</script>
+
+
+
+
+
+</head>
+<body ng-app="myApp5">
+
+
+<form ng-controller="ajouterPatient" enctype="multipart/form-data"> 
+    <div class="container spacer">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group spacer" >
+                                    <input class="form-control" placeholder="Nom" name="nom" ng-model="nom" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Prenom" name="prenom" ng-model="prenom" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Sexe ex: masculin ou Feminin" name="sexe" ng-model="sexe" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Ville" name="ville" ng-model="ville" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Adresse" name="adresse" ng-model="adresse" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Code postale" name="codePostale" ng-model="codePostale" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Phone Number" name="phoneNumber" ng-model="phoneNumber" autofocus>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" ng-model="email" required="required">
+                                </div>
+                                <div class="form-group">
+                                   Photos: <input class="form-control" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" ng-model="photos" type="file" value=""> <br/>
+                                	<div id="imgTest" ng-model="imgTest"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" ng-model="password" required="required">
+                                </div>
+                                 <div class="form-group">
+                                    <input class="form-control" placeholder="Numeros Securité social" name="numeroSecu" ng-model="numeroSecu" autofocus>
+                                </div>
+                                 <div class="form-group"> CMU:<br>
+                                  <input class="form-control"  ng-model="cmu" placeholder="repondre par oui ou non">
+
+
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                
+                                <button ng-click="ajouterPatient()" class="btn btn-lg btn-success btn-block"> Ajouter </button>
+                          <center> <h3 style="color:'red'">{{patient.nom}} a été ajouter </h3> </center>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="angularjs/angular.min.js"></script>
+<script type="text/javascript" src="js/ajoutPatient.js"></script>	
+	
+   
+</form>
+
+
+
+
+</body>
+</html>
